@@ -436,7 +436,7 @@ type SSHWINRMSecretData struct {
 	AuthType string
 }
 
-type CliCDRequest struct {
+type CliRequest struct {
 	AuthToken   string `survey:"authToken"`
 	AuthType    string `survey:"authType"`
 	Account     string `survey:"account"`
