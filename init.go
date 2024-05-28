@@ -9,9 +9,10 @@ import (
 	"time"
 
 	"github.com/urfave/cli/v2"
+	"harness/defaults"
 )
 
-var tempFilePath = "project_info.tmp"
+//var tempFilePath = "project_info.tmp"
 
 func InitProject(c *cli.Context) error {
 
@@ -101,7 +102,7 @@ func detectProjectFramework() (string, string) {
 }
 
 func saveProjectInfo(framework, language string) error {
-	file, err := os.Create(tempFilePath)
+	file, err := os.Create(defaults.TEMPFILEPATH)
 	if err != nil {
 		return fmt.Errorf("failed to create temp file: %v", err)
 	}
