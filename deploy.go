@@ -6,6 +6,7 @@ import (
 	"github.com/fatih/color"
 	"github.com/urfave/cli/v2"
 	"harness/defaults"
+	. "harness/utils"
 	"os"
 	"strings"
 )
@@ -20,15 +21,19 @@ func DeployProject(c *cli.Context) error {
 		return err
 	}
 
-	fmt.Printf("Loaded framework: %s\n", framework)
-	fmt.Printf("Loaded language: %s\n", language)
+	fmt.Printf("Loaded framework: %s\n", GetColoredText(framework, color.FgCyan))
+	fmt.Printf("Loaded language: %s\n", GetColoredText(language, color.FgCyan))
 
 	hasDockerfile, err := checkDockerfile()
 	if err != nil {
 		return err
 	}
 
-	if !hasDockerfile {
+	if hasDockerfile {
+		color.Set(color.FgGreen)
+		fmt.Println("Awesome! 🐋 Dockerfile found.")
+		color.Unset()
+	} else {
 		fmt.Print("No Dockerfile found. Would you like to create one? (y/n) : ")
 		var response string
 		fmt.Scanln(&response)
@@ -39,7 +44,7 @@ func DeployProject(c *cli.Context) error {
 				return err
 			}
 			color.Set(color.FgGreen)
-			fmt.Println("Dockerfile created.")
+			fmt.Println("🐋 Dockerfile created.")
 			color.Unset()
 			hasDockerfile = true
 		}
@@ -74,8 +79,6 @@ func DeployProject(c *cli.Context) error {
 	//CheckConnectorExistsAndCreate(c, orgName, projectName)
 
 	fmt.Println("Deployment process initialized.")
-
-	// Further deployment steps would go here
 
 	return nil
 }
