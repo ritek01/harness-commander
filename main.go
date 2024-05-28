@@ -7,7 +7,7 @@ import (
 	"github.com/urfave/cli/v2"
 	"github.com/urfave/cli/v2/altsrc"
 	"harness/auth"
-	. "harness/utils"
+	. "harness/share"
 	"os"
 )
 
@@ -52,9 +52,13 @@ func main() {
 		EnableBashCompletion: true,
 		Commands: []*cli.Command{
 			{
-				Name:   "login",
-				Usage:  "Authenticate with Harness",
-				Action: auth.Login,
+				Name:  "login",
+				Usage: "Authenticate with Harness",
+				Action: func(context *cli.Context) error {
+					return cliWrapper(func(context *cli.Context) error {
+						return auth.Login(context)
+					}, context)
+				},
 			},
 			{
 				Name:   "init",
