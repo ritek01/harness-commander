@@ -6,6 +6,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/urfave/cli/v2"
 	"github.com/urfave/cli/v2/altsrc"
+	"harness/auth"
 	. "harness/utils"
 	"os"
 )
@@ -53,7 +54,7 @@ func main() {
 			{
 				Name:   "login",
 				Usage:  "Authenticate with Harness",
-				Action: login,
+				Action: auth.Login,
 			},
 			{
 				Name:   "init",
@@ -72,24 +73,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-}
-
-func login(c *cli.Context) error {
-	fmt.Println("Logging in to Harness...")
-	// Implement login functionality here
-	return nil
-}
-
-func initProject(c *cli.Context) error {
-	fmt.Println("Initializing project...")
-	// Implement project initialization functionality here
-	return nil
-}
-
-func deploy(c *cli.Context) error {
-	fmt.Println("Deploying project...")
-	// Implement deploy functionality here
-	return nil
 }
 
 func cliWrapper(fn cliFnWrapper, ctx *cli.Context) error {
