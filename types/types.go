@@ -290,3 +290,39 @@ type ConnectorResponse struct {
 type ConnectorBody struct {
 	Conn Connector `json:"connector"`
 }
+
+type CreateRepoRequest struct {
+	DefaultBranch string `json:"default_branch"`
+	Description   string `json:"description"`
+	GitIgnore     string `json:"git_ignore"`
+	IsPublic      bool   `json:"is_public"`
+	License       string `json:"license"`
+	Uid           string `json:"uid"`
+	Readme        bool   `json:"readme"`
+	ParentRef     string `json:"parent_ref"`
+}
+
+type CreateRepoResponse struct {
+	ID             int    `json:"id"`
+	ParentID       int    `json:"parent_id"`
+	Identifier     string `json:"identifier"`
+	Path           string `json:"path"`
+	Description    string `json:"description"`
+	IsPublic       bool   `json:"is_public"`
+	CreatedBy      int    `json:"created_by"`
+	Created        int64  `json:"created"`
+	Updated        int64  `json:"updated"`
+	Size           int    `json:"size"`
+	SizeUpdated    int    `json:"size_updated"`
+	DefaultBranch  string `json:"default_branch"`
+	ForkID         int    `json:"fork_id"`
+	NumForks       int    `json:"num_forks"`
+	NumPulls       int    `json:"num_pulls"`
+	NumClosedPulls int    `json:"num_closed_pulls"`
+	NumOpenPulls   int    `json:"num_open_pulls"`
+	NumMergedPulls int    `json:"num_merged_pulls"`
+	Importing      bool   `json:"importing"`
+	IsEmpty        bool   `json:"is_empty"`
+	GitURL         string `json:"git_url"`
+	UID            string `json:"uid"`
+}

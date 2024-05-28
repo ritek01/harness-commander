@@ -6,6 +6,7 @@ import (
 	"github.com/fatih/color"
 	"github.com/urfave/cli/v2"
 	"harness/defaults"
+	"harness/globals"
 	. "harness/utils"
 	"os"
 	"strings"
@@ -76,8 +77,26 @@ func DeployProject(c *cli.Context) error {
 		return err
 	}
 
-	//CheckConnectorExistsAndCreate(c, orgName, projectName)
+	globals.OrgId = orgName
+	globals.ProjectId = projectName
 
+	_, err = DockerConnector(c)
+	if err != nil {
+		return err
+	}
+
+	fmt.Print("Do you want to use the Harness Code Repository for code hosting? (y/n): ")
+	var useHarnessRepo string
+	fmt.Scanln(&useHarnessRepo)
+
+	if useHarnessRepo == "y" {
+		err = UploadToHarnessCodeRepo()
+		if err != nil {
+			return err
+		}
+	} else {
+		fmt.Println("Feature not supported yet.")
+	}
 	fmt.Println("Deployment process initialized.")
 
 	return nil

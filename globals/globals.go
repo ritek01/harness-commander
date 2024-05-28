@@ -5,4 +5,6 @@ var (
 	AccountId string
 	BaseURL   string
 	UserId    string
+	OrgId     string
+	ProjectId string
 )
