@@ -90,13 +90,24 @@ func DeployProject(c *cli.Context) error {
 	fmt.Scanln(&useHarnessRepo)
 
 	if useHarnessRepo == "y" {
-		err = UploadToHarnessCodeRepo()
-		if err != nil {
-			return err
+		fmt.Printf("Already using Harness Code Repository for code hosting ? (y/n): ")
+		var useHarnessCodeRepo string
+		fmt.Scanln(&useHarnessCodeRepo)
+		if useHarnessCodeRepo == "y" {
+			fmt.Println("Provide the repository Name: ")
+			repoName := promptUser("Repository Name", "default_repo")
+			globals.RepoName = repoName
+		} else {
+			err = UploadToHarnessCodeRepo()
+			if err != nil {
+				return err
+			}
 		}
 	} else {
 		fmt.Println("Feature not supported yet.")
 	}
+	//Pipeline creation
+
 	fmt.Println("Deployment process initialized.")
 
 	return nil

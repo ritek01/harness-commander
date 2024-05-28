@@ -7,4 +7,5 @@ var (
 	UserId    string
 	OrgId     string
 	ProjectId string
+	RepoName  string
 )
