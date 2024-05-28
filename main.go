@@ -61,9 +61,13 @@ func main() {
 				},
 			},
 			{
-				Name:   "init",
-				Usage:  "Initialize Harness CLI in the project",
-				Action: initProject,
+				Name:  "init",
+				Usage: "Initialize Harness CLI in the project",
+				Action: func(context *cli.Context) error {
+					return cliWrapper(func(context *cli.Context) error {
+						return InitProject(context)
+					}, context)
+				},
 			},
 			{
 				Name:   "deploy",
