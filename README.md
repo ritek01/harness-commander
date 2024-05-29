@@ -7,7 +7,7 @@
 <h3 align="center">The proposed CLI tool for Harness consists of several components working together to provide a seamless onboarding and deployment experience.</h3>
 <br>
 
-![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.gif)
+[![SfOEG.gif](https://s10.gifyu.com/images/SfOEG.gif)](https://gifyu.com/image/SfOEG)
 
 ## Key Features
 
