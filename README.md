@@ -20,16 +20,28 @@
     - Automatically detects your deployment type for ready to ship
     - Don't worry you still have options to choose whatever is in your mind 🧑‍💻
 * Cross platform
-    - Windows, macOS and Linux ready. 🖥️
+    - MacOS and Linux ready. 🖥️
 
 ## How To Use
 
-### To clone and run this application, you'll need [Git](https://git-scm.com) and [Go Lang](https://go.dev/doc/install) installed on your computer. From your command line:
+### Installation
+> To clone and run this application, you'll need [Git](https://git-scm.com) and [Go Lang](https://go.dev/doc/install) installed on your computer. From your command line:
+
+1. Download the latest release from the [GitHub releases page](https://github.com/ritek01/harness-cli/releases).
+
+2. Extract the downloaded file to a directory of your choice. It is recommended that you move the extracted file to a folder specified in your system's path for ease of use.
+
+3. If you are using macOS, you can move the harness-upgrade file to the `/usr/local/bin/` directory by running the following command:
+
+```shell
+mv harness /usr/local/bin/
+```
+
+4. Run the `harness` command to verify that the installation was successful.
+
+### Usage 
 
 ```bash
-# Install the CLI 
-$ git clone https://github.com/ritek01/harness-cli.git
-
 # Login into your account using API key
 $ harness login
 
@@ -47,7 +59,7 @@ $ harness deploy
 
 ## Tech Stack
 
-[<img src="https://go.dev/images/favicon-gopher.png" style="width: 50px; height: 50px; margin-left: 40px;">](https://go.dev/doc/)[<img src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png" style="width: 50px; height: 50px;margin-left: 40px;">](https://docs.python.org/3/) [<img src="https://img.icons8.com/?size=100&id=54087&format=png&color=000000" style="width: 70px; height: 70px; margin-left: 40px;">](https://nodejs.org/docs/latest/api/)
+[<img src="https://go.dev/images/favicon-gopher.png" style="width: 50px; height: 50px; margin-left: 40px;">](https://go.dev/doc/)[<img src="https://djeqr6to3dedg.cloudfront.net/repo-logos/library/docker/live/logo.png" style="width: 50px; height: 50px;margin-left: 40px;">](https://hub.docker.com/) 
 
 ## Credits
 
@@ -56,4 +68,6 @@ This project is created during the Hackweek'24 at Harness Org
 - [Ritek Rounak](https://github.com/ritek01)
 - [Prakhar Martand](https://github.com/PrakharMartand)
 
-
+<a href="https://github.com/ritek01/harness-cli/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ritek01/harness-cli" />
+</a>
