@@ -106,11 +106,26 @@ func DeployProject(c *cli.Context) error {
 	} else {
 		fmt.Println("Feature not supported yet.")
 	}
-	//Pipeline creation
-
+	CreatePipeline()
+	RemoveTempFiles()
 	fmt.Println("Deployment process initialized.")
 
 	return nil
+}
+
+func RemoveTempFiles() {
+	err := os.Remove(defaults.TEMPFILEPATH)
+	if err != nil {
+		_ = fmt.Errorf("failed to delete temp file: %v", err)
+	}
+	err = os.Remove("base_pipeline.yaml")
+	if err != nil {
+		_ = fmt.Errorf("failed to delete base pipeline file: %v", err)
+	}
+	err = os.Remove("modified_pipeline.yaml")
+	if err != nil {
+		_ = fmt.Errorf("failed to delete modified pipeline file: %v", err)
+	}
 }
 
 func promptUser(prompt, defaultValue string) string {

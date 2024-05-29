@@ -1,2 +1,4 @@
 .idea/
 project_info.tmp
+/base_pipeline.yaml
+/modified_pipeline.yaml

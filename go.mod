@@ -7,6 +7,7 @@ require (
 	github.com/fatih/color v1.17.0
 	github.com/sirupsen/logrus v1.9.3
 	github.com/urfave/cli/v2 v2.27.2
+	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (
@@ -21,5 +22,4 @@ require (
 	golang.org/x/sys v0.18.0 // indirect
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
 	golang.org/x/text v0.4.0 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

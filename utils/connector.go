@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/fatih/color"
 	"github.com/urfave/cli/v2"
+	"harness/globals"
 	"os"
 	"strings"
 	"time"
@@ -16,6 +17,7 @@ func DockerConnector(c *cli.Context) (bool, error) {
 	color.Set(color.FgGreen)
 	fmt.Printf("\nDocker Connector : %s is present in the account\n", dockerConnName)
 	color.Unset()
+	globals.DockerConnector = dockerConnName
 	return true, nil
 }
 
