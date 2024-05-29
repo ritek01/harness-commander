@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
- HARNESS COMMANDER
+  <img width="1151" alt="image" src="https://github.com/ritek01/harness-cli/assets/139952065/012f928e-b90a-4aa6-8212-4ebad3eb0749">
   <br>
 </h1>
 <h3 align="center">The proposed CLI tool for Harness consists of several components working together to provide a seamless onboarding and deployment experience.</h3>
