@@ -25,15 +25,14 @@ type UserDataLoad struct {
 }
 
 var asciiArt = `
-
- ██╗  ██╗  █████╗  ██████╗  ███╗   ██╗ ███████╗  ██████╗  ██████╗        █████╗  ██╗      ██╗
- ██║  ██║ ██╔══██╗ ██╔══██╗ ████╗  ██║ ██╔════╝ ██╔════╝ ██╔════╝       ██╔══██╗ ██║      ██║
- ███████║ ███████║ ██████╔╝ ██╔██╗ ██║ █████╗   ╚█████╗  ╚█████╗        ██║  ╚═╝ ██║   	  ██║
- ██╔══██║ ██╔══██║ ██╔══██╗ ██║ ╚████║ ██╔══╝    ╚═══██╗  ╚═══██╗       ██║  ██╗ ██║   	  ██║
- ██║  ██║ ██║  ██║ ██║  ██║ ██║  ╚███║ ███████╗ ██████╔╝ ██████╔╝       ╚█████╔╝ ███████║ ██║
- ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝   ╚══╝ ╚══════╝ ╚═════╝  ╚═════╝         ╚════╝  ╚══════╝ ╚═╝
-
- Welcome to the new Harness CLI utility to interact with the Harness Platform and seamlessly 
+██╗  ██╗ █████╗ ██████╗ ███╗   ██╗███████╗███████╗███████╗     ██████╗ ██████╗ ███╗   ███╗███╗   ███╗ █████╗ ███╗   ██╗██████╗ ███████╗██████╗ 
+██║  ██║██╔══██╗██╔══██╗████╗  ██║██╔════╝██╔════╝██╔════╝    ██╔════╝██╔═══██╗████╗ ████║████╗ ████║██╔══██╗████╗  ██║██╔══██╗██╔════╝██╔══██╗
+███████║███████║██████╔╝██╔██╗ ██║█████╗  ███████╗███████╗    ██║     ██║   ██║██╔████╔██║██╔████╔██║███████║██╔██╗ ██║██║  ██║█████╗  ██████╔╝
+██╔══██║██╔══██║██╔══██╗██║╚██╗██║██╔══╝  ╚════██║╚════██║    ██║     ██║   ██║██║╚██╔╝██║██║╚██╔╝██║██╔══██║██║╚██╗██║██║  ██║██╔══╝  ██╔══██╗
+██║  ██║██║  ██║██║  ██║██║ ╚████║███████╗███████║███████║    ╚██████╗╚██████╔╝██║ ╚═╝ ██║██║ ╚═╝ ██║██║  ██║██║ ╚████║██████╔╝███████╗██║  ██║
+╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝╚══════╝     ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚══════╝╚═╝  ╚═╝
+                                                                                                                                               
+ Welcome to the Harness Commander, a utility to interact with the Harness Platform and seamlessly 
  deploy your applications.
 `
 
@@ -59,7 +58,7 @@ func main() {
 	app := &cli.App{
 		Name:                 "harness",
 		Version:              Version,
-		Usage:                "Welcome to New Harness CLI utility to interact with Harness Platform to seamlessly deploy your applications.",
+		Usage:                "Welcome to Harness Commander, a utility to interact with Harness Platform to seamlessly deploy your applications.",
 		EnableBashCompletion: true,
 		Commands: []*cli.Command{
 			{
@@ -73,7 +72,7 @@ func main() {
 			},
 			{
 				Name:  "init",
-				Usage: "Initialize Harness CLI in the project",
+				Usage: "Initialize Harness Commander CLI in the project",
 				Action: func(context *cli.Context) error {
 					if err := LoadCredentials(); err != nil {
 						fmt.Println(err, "\nPlease log in first.")
@@ -84,7 +83,7 @@ func main() {
 			},
 			{
 				Name:  "deploy",
-				Usage: "Deploy the project using Harness",
+				Usage: "Deploy your project using Harness",
 				Action: func(context *cli.Context) error {
 					if err := LoadCredentials(); err != nil {
 						fmt.Println(err, "\nPlease log in first.")
