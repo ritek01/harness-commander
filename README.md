@@ -48,7 +48,7 @@ $ harness deploy
 
 ## Tech Stack
 
-[<img src="https://go.dev/images/favicon-gopher.png" style="width: 50px; height: 50px; margin-left: 20px;">](https://go.dev/doc/)[<img src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png" style="width: 50px; height: 50px;margin-left: 20px;">](https://docs.python.org/3/) [<img src="https://img.icons8.com/?size=100&id=54087&format=png&color=000000" style="width: 70px; height: 70px; margin-left: 20px;">](https://nodejs.org/docs/latest/api/)
+[<img src="https://go.dev/images/favicon-gopher.png" style="width: 50px; height: 50px; margin-left: 40px;">](https://go.dev/doc/)[<img src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png" style="width: 50px; height: 50px;margin-left: 40px;">](https://docs.python.org/3/) [<img src="https://img.icons8.com/?size=100&id=54087&format=png&color=000000" style="width: 70px; height: 70px; margin-left: 40px;">](https://nodejs.org/docs/latest/api/)
 
 ## Credits
 
