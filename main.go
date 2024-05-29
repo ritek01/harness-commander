@@ -15,7 +15,7 @@ import (
 	"os"
 )
 
-var Version = "Harness CLI : Hack Week 24 🎉"
+var Version = "Harness Commander CLI : Hack Week 24 🎉"
 
 type UserDataLoad struct {
 	ApiKey    string `json:"apiKey"`

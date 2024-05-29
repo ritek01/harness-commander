@@ -114,7 +114,7 @@ func DeployProject(c *cli.Context) error {
 	fmt.Println("Deployment Done.")
 	color.Unset()
 	color.Set(color.FgYellow)
-	fmt.Println("Thank you for using Harness CLI.")
+	fmt.Println("Thank you for using Harness Commander CLI.")
 	color.Unset()
 	return nil
 }
