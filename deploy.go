@@ -10,6 +10,7 @@ import (
 	. "harness/utils"
 	"os"
 	"strings"
+	"time"
 )
 
 func DeployProject(c *cli.Context) error {
@@ -21,8 +22,8 @@ func DeployProject(c *cli.Context) error {
 	if err != nil {
 		return err
 	}
-
-	fmt.Printf("Loaded framework: %s\n", GetColoredText(framework, color.FgCyan))
+	ProjectprogressBar("Loading Project Info...")
+	fmt.Printf("\nLoaded framework: %s\n", GetColoredText(framework, color.FgCyan))
 	fmt.Printf("Loaded language: %s\n", GetColoredText(language, color.FgCyan))
 
 	hasDockerfile, err := checkDockerfile()
@@ -44,8 +45,9 @@ func DeployProject(c *cli.Context) error {
 			if err != nil {
 				return err
 			}
+			ProjectprogressBar("Creating Dockerfile...")
 			color.Set(color.FgGreen)
-			fmt.Println("🐋 Dockerfile created.")
+			fmt.Println("\n🐋 Dockerfile created.")
 			color.Unset()
 			hasDockerfile = true
 		}
@@ -56,7 +58,7 @@ func DeployProject(c *cli.Context) error {
 		return err
 	}
 
-	fmt.Print("Do you want to proceed deploying using Harness? (y/n): ")
+	fmt.Print("\nDo you want to proceed deploying using Harness? (y/n): ")
 	var proceed string
 	fmt.Scanln(&proceed)
 
@@ -65,7 +67,7 @@ func DeployProject(c *cli.Context) error {
 		return nil
 	}
 
-	orgName := promptUser("Org Name (default)", "default")
+	orgName := promptUser("\nOrg Name (default)", "default")
 	projectName := promptUser("Project Name (default_project)", "default_project")
 
 	_, err = CheckOrgExistsAndCreate(c, orgName)
@@ -85,16 +87,16 @@ func DeployProject(c *cli.Context) error {
 		return err
 	}
 
-	fmt.Print("Do you want to use the Harness Code Repository for code hosting? (y/n): ")
+	fmt.Print("\n\nDo you want to use the Harness Code Repository for code hosting? (y/n): ")
 	var useHarnessRepo string
 	fmt.Scanln(&useHarnessRepo)
 
 	if useHarnessRepo == "y" {
-		fmt.Printf("Already using Harness Code Repository for code hosting ? (y/n): ")
+		fmt.Printf("\nAlready using Harness Code Repository for code hosting ? (y/n): ")
 		var useHarnessCodeRepo string
 		fmt.Scanln(&useHarnessCodeRepo)
 		if useHarnessCodeRepo == "y" {
-			fmt.Println("Provide the repository Name: ")
+			fmt.Println("\nProvide the repository Name: ")
 			repoName := promptUser("Repository Name", "default_repo")
 			globals.RepoName = repoName
 		} else {
@@ -108,8 +110,12 @@ func DeployProject(c *cli.Context) error {
 	}
 	CreatePipeline()
 	RemoveTempFiles()
-	fmt.Println("Deployment process initialized.")
-
+	color.Set(color.FgGreen)
+	fmt.Println("Deployment Done.")
+	color.Unset()
+	color.Set(color.FgYellow)
+	fmt.Println("Thank you for using Harness CLI.")
+	color.Unset()
 	return nil
 }
 
@@ -143,7 +149,7 @@ func promptUser(prompt, defaultValue string) string {
 func loadProjectInfo() (string, string, error) {
 	file, err := os.Open(defaults.TEMPFILEPATH)
 	if err != nil {
-		return "", "", fmt.Errorf("failed to open temp file: %v", err)
+		return "", "", fmt.Errorf("please run 'harness init' first")
 	}
 	defer file.Close()
 
@@ -255,4 +261,17 @@ func saveDockerfileInfo(hasDockerfile bool) error {
 	}
 
 	return nil
+}
+
+func ProjectprogressBar(info string) {
+	barLength := 20
+	spinChars := []string{"|", "/", "-", "\\"}
+	for i := 0; i <= barLength; i++ {
+		spinner := spinChars[i%len(spinChars)]
+		progress := strings.Repeat("=", i) + strings.Repeat(" ", barLength-i)
+		color.Set(color.FgCyan)
+		fmt.Printf("\r[%s] %s %s", progress, spinner, info)
+		color.Unset()
+		time.Sleep(time.Millisecond * 100)
+	}
 }

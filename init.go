@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/fatih/color"
 	"os"
+	"os/exec"
 	"strings"
 	"time"
 
@@ -52,6 +53,19 @@ func InitProject(c *cli.Context) error {
 	color.Set(color.FgGreen)
 	fmt.Println("\nHarness project initialized successfully!")
 	color.Unset()
+
+	fmt.Print("Do you want to Proceed with the deployment? (y/n) : ")
+	var deployment string
+	_, err = fmt.Scanln(&deployment)
+	if err != nil {
+		return err
+	}
+	if deployment == "y" {
+		err := deployPipeline()
+		if err != nil {
+			return err
+		}
+	}
 
 	return nil
 }
@@ -113,5 +127,16 @@ func saveProjectInfo(framework, language string) error {
 		return fmt.Errorf("failed to write to temp file: %v", err)
 	}
 
+	return nil
+}
+
+func deployPipeline() error {
+	cmd := exec.Command("harness", "deploy")
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	err := cmd.Run()
+	if err != nil {
+		return fmt.Errorf("error running deploy command: %v", err)
+	}
 	return nil
 }

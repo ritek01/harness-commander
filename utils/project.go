@@ -47,7 +47,7 @@ func CheckProjectExistsAndCreate(c *cli.Context, orgName string, projectName str
 	projectId := getProjectIdByName(projects, projectName)
 
 	if len(projectId) == 0 {
-		fmt.Println("Project not found. Creating project...")
+		fmt.Println("\nProject not found. Creating project...")
 		url := fmt.Sprintf("%s/projects?accountIdentifier=%s&orgIdentifier=%s", GetNGBaseURL(c), globals.AccountId, orgName)
 		resp, err := netclient.PostNew(url, globals.ApiKey, ProjectBody{
 			Project: ProjectDetails{
@@ -63,7 +63,7 @@ func CheckProjectExistsAndCreate(c *cli.Context, orgName string, projectName str
 		}
 		log.Info("Project created successfully")
 	} else {
-		fmt.Printf("Project '%s' already exists. Do you want to use it? (y/n): ", projectName)
+		fmt.Printf("\nProject '%s' already exists. Do you want to use it? (y/n): ", projectName)
 		var useProject string
 		fmt.Scanln(&useProject)
 

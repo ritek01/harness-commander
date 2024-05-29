@@ -10,6 +10,8 @@ import (
 	"net/http"
 	"os"
 	_ "os"
+	"strings"
+	"time"
 )
 
 type Pipeline struct {
@@ -104,8 +106,10 @@ func CreatePipeline() {
 		fmt.Printf("Error creating pipeline in Harness: %v\n", err)
 		return
 	}
+	fmt.Println()
+	PipelineprogressBar("Creating pipeline in Harness...")
 	color.Set(color.FgGreen)
-	fmt.Println("Pipeline created successfully!")
+	fmt.Println("\nPipeline created successfully!")
 	color.Unset()
 	PipelineUrl := "https://app.harness.io/ng/account/" + globals.AccountId + "/home/orgs/" + globals.OrgId + "/projects/" + globals.ProjectId + "/pipelines/" + pipeline.Pipeline.Identifier + "/pipeline-studio/"
 	fmt.Printf("Pipeline Url : %s\n", GetColoredText(PipelineUrl, color.FgCyan))
@@ -147,4 +151,17 @@ func CreateHarnessPipeline(pipelineYAML []byte) error {
 		return fmt.Errorf("failed to parse response body: %v", err)
 	}
 	return nil
+}
+
+func PipelineprogressBar(info string) {
+	barLength := 20
+	spinChars := []string{"|", "/", "-", "\\"}
+	for i := 0; i <= barLength; i++ {
+		spinner := spinChars[i%len(spinChars)]
+		progress := strings.Repeat("=", i) + strings.Repeat(" ", barLength-i)
+		color.Set(color.FgCyan)
+		fmt.Printf("\r[%s] %s %s", progress, spinner, info)
+		color.Unset()
+		time.Sleep(time.Millisecond * 100)
+	}
 }

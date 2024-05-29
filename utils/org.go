@@ -59,7 +59,7 @@ func CheckOrgExistsAndCreate(c *cli.Context, orgName string) (bool, error) {
 	org := getOrganisations(c)
 	orgId := findOrgIdByName(org, orgName)
 	if len(orgId) == 0 {
-		fmt.Printf("Organization '%s' does not exist. Do you want to create it? (y/n): ", orgName)
+		fmt.Printf("\nOrganization '%s' does not exist. Do you want to create it? (y/n): ", orgName)
 		var createOrg string
 		fmt.Scanln(&createOrg)
 
@@ -72,7 +72,7 @@ func CheckOrgExistsAndCreate(c *cli.Context, orgName string) (bool, error) {
 			return false, err
 		}
 	} else {
-		fmt.Printf("Organization '%s' already exists. Do you want to use it? (y/n): ", orgName)
+		fmt.Printf("\nOrganization '%s' already exists. Do you want to use it? (y/n): ", orgName)
 		var useOrg string
 		fmt.Scanln(&useOrg)
 
