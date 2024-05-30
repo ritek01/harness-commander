@@ -57,6 +57,10 @@ $ harness deploy
 # - Deploys your project into requested server / default Harness server
 ```
 
+
+<video src="https://github.com/ritek01/harness-commander/assets/140505097/843159f7-9e8a-4c61-ac4a-c67f93a8f4bf" width="320" height="240" controls></video>
+
+
 ## Tech Stack
 
 [<img src="https://go.dev/images/favicon-gopher.png" style="width: 50px; height: 50px; margin-left: 40px;">](https://go.dev/doc/)[<img src="https://djeqr6to3dedg.cloudfront.net/repo-logos/library/docker/live/logo.png" style="width: 50px; height: 50px;margin-left: 40px;">](https://hub.docker.com/) 
